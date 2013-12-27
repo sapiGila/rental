@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="finDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <!-- Tomcat Configuration
+        <property name="jndiName" value="java:comp/env/jdbc/Osaka" />
+        -->
+        <!-- Glassfish 3 Configuration -->
+        <property name="jndiName" value="jdbc/Fintegrity" />
+
+    </bean>
+
+    <bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
+        <property name="databaseType" value="mysql" />
+        <property name="dataSource" ref="finDataSource" />
+        <property name="transactionManager" ref="transactionManager" />
+        <property name="databaseSchemaUpdate" value="true" />
+        <property name="jobExecutorActivate" value="false" />
+    </bean>
+
+</beans>

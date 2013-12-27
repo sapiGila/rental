@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+
+	<!-- Hibernate session factory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+
+		<property name="dataSource" ref="finDataSource" />
+
+		<property name="hibernateProperties">
+			<value>
+                <![CDATA[
+
+                hibernate.dialect=com.skyworx.base.custom.hibernate.dialect.MySQL5InnoDBDialect
+                hibernate.hbm2ddl.auto=update
+                hibernate.show_sql=false
+                javax.persistence.validation.mode=none
+                hibernate.jdbc.batch_size=50
+                
+                ]]>
+			</value>
+		</property>
+
+		<property name="packagesToScan">
+			<array>
+				<value>com.skyworx.security.model.entity</value>
+				<value>com.skyworx.common.model.entity</value>
+				<value>com.skyworx.workflow.model.entity</value>
+				<value>com.skyworx.los.model.entity</value>
+				<value>com.skyworx.los.common.model.entity</value>
+				<value>com.skyworx.los.msurvey.model.entity</value>
+				<value>com.skyworx.cif.model.entity</value>
+				<value>com.skyworx.fclt.model.entity</value>
+				<value>com.skyworx.lad.model.entity</value>
+				<value>com.skyworx.pay.model.entity</value>
+				<value>com.skyworx.col.model.entity</value>
+				<value>com.skyworx.gl.model.entity</value>
+                <value>com.skyworx.cash.model.entity</value>
+                <value>com.skyworx.procurement.model.entity</value>
+                <value>com.skyworx.object.model.entity</value>
+                <value>com.skyworx.fa.model.entity</value>
+			</array>
+		</property>
+
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+</beans>

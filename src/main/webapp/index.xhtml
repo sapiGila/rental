@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Rental Movie Skye</title>
+	<meta name="keywords"
+		content="tech layer, free template, one page layout" />
+	<meta name="description"
+		content="Tech Layer is free one-page template layout by templatemo.com using colorful navigations and darkgray background." />
+	<link href="templatemo_style.css" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.scrollTo-min.js"></script>
+	<script type="text/javascript" src="js/jquery.localscroll-min.js"></script>
+	<script type="text/javascript" src="js/init.js"></script>
+	<link rel="stylesheet" href="css/slimbox2.css" type="text/css"
+		media="screen" />
+	<script type="text/JavaScript" src="js/slimbox2.js"></script>
+	<script language="javascript" type="text/javascript">
+function clearText(field)
+{
+    if (field.defaultValue == field.value) field.value = '';
+    else if (field.value == '') field.value = field.defaultValue;
+}
+</script>
+</h:head>
+<h:body>
+
+	<div id="templatemo_header_wrapper">
+		<div id="templatemo_header">
+			<div id="site_title">
+				<a rel="nofollow"
+					href="http://www.templatemo.com/preview/templatemo_375_tech_layer">Rental
+					Movie Skye</a>
+			</div>
+			<a class="templatemo_header_bg" href="http://it.hiresimage.com"
+				title="ricerca immagini" target="_blank"><img
+				src="images/header.png" alt="ricerca immagini"
+				title="ricerca immagini" /></a>
+		</div>
+	</div>
+	
+	#{hibernateMain.testHibernate()}
+
+	<div id="templatemo_main_wrapper_form">
+		<h:form>
+			<p:panel header="Login">
+				<h:panelGrid id="grid" columns="4" cellpadding="5">
+
+					<h:outputLabel for="id" value="ID : " style="font-weight:bold" />
+					<p:inputText id="id" value="#{user.id}" required="true"
+						styleClass="required" label="Name" />
+					<p:message for="id" />
+					<h:outputText value="" />
+
+					<h:outputLabel for="pass" value="Password : "
+						style="font-weight:bold" />
+					<p:inputText id="pass" value="#{user.password}" label="Password"
+						styleClass="required">
+					</p:inputText>
+					<p:message for="pass" />
+					<h:outputText value="" />
+				</h:panelGrid>
+
+				<p:commandButton value="Login" />
+
+			</p:panel>
+		</h:form>
+	</div>
+
+
+</h:body>
+</html>
